@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as LogoSVG } from '../assets/Logo.svg';
+import { theme } from '../theme/theme';
 
 const Nav = () => (
   <Wrapper>
@@ -13,21 +14,25 @@ const Nav = () => (
 );
 const Wrapper = styled.div`
   grid-area: nav;
-  opacity: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
 const Links = styled.div`
+  height: 60%;
   text-transform: uppercase;
-  width: 20%;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
+  align-items: flex-start;
+  color: ${(props) => props.theme.colors.tertiary};
 `;
 
 const Logo = styled(LogoSVG)`
-  height: 100%;
+  width: 3rem;
+  height: 3rem;
+  stroke: ${(props) => props.theme.colors.tertiary};
 `;
 
 export default Nav;

@@ -1,24 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
-import Nav from './components/Nav';
-import Hero from './components/Hero';
+import styled from 'styled-components/macro';
+import Hero from './pages/Hero';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
 
 const App = () => (
-  <HeroWrapper>
-    <Nav />
+  <BodyWrapper>
     <Hero />
-  </HeroWrapper>
+    <Projects />
+    <Contact />
+  </BodyWrapper>
 );
 
 export default App;
 
-const HeroWrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
+const BodyWrapper = styled.div`
   background-color: ${(props) => props.theme.colors.primary};
-  display: grid;
-  grid-template-rows: 8vh 1fr;
-  grid-template-areas:
-    'nav'
-    'hero';
+  overflow: hidden;
 `;
