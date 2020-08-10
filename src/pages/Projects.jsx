@@ -61,7 +61,9 @@ const Projects = () => {
 export default Projects;
 
 const Wrapper = styled.div`
+  scroll-snap-align: start;
   height: 100vh;
+  width: 100vw;
   display: grid;
   grid-template-columns: 1rem 1fr 1fr 1rem;
   grid-template-rows: 7vh 35vh 0.4fr 30vh;

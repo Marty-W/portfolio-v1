@@ -94,6 +94,7 @@ const Form = () => {
 export default Form;
 
 const Wrapper = styled.div`
+  height: 100%;
   padding: 1rem;
   grid-area: form;
   background-color: ${(props) => props.theme.colors.secondary};

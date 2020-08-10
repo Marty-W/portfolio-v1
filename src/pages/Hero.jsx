@@ -27,7 +27,9 @@ const Hero = () => {
 export default Hero;
 
 const Wrapper = styled.div`
+  scroll-snap-align: start;
   height: 100vh;
+  width: 100vw;
   grid-column: 2 / span 1;
   display: grid;
   grid-template-rows: 10vh 3rem 4rem 50vh 1fr;

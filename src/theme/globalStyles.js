@@ -51,6 +51,7 @@ textarea {
 
 html {
   box-sizing: border-box;
+  scroll-snap-type: y mandatory;
 }
 
 *, *::before, *::after {
@@ -65,5 +66,8 @@ video {
 
  body {
      font-family: 'Raleway', sans-serif;
+     scroll-snap-type: y mandatory;
+     background-color: ${(props) => props.theme.colors.primary};
+     overflow-y: scroll;
  }
 `;
