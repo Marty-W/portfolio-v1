@@ -26,12 +26,13 @@ export default Contact;
 const Wrapper = styled.div`
   height: 100vh;
   display: grid;
-  grid-template-rows: 7vh 1fr 1fr;
+  grid-template-rows: 7vh 1fr 1fr 50vh;
   grid-template-columns: 1rem 1fr 1fr 1rem;
   grid-template-areas:
     '. logo logo .'
     '. contact contact .'
-    '. form form .';
+    '. . . .'
+    'form form form form';
 `;
 
 const ContactWrapper = styled.div`
