@@ -6,7 +6,7 @@ import Form from '../components/Form';
 
 const Contact = () => {
   return (
-    <Wrapper>
+    <Wrapper id='contact'>
       <Logo />
       <ContactWrapper>
         <span>Martin Weber</span>
@@ -24,9 +24,8 @@ const Contact = () => {
 export default Contact;
 
 const Wrapper = styled.div`
+  grid-area: contact;
   scroll-snap-align: start;
-  height: 100vh;
-  width: 100vw;
   display: grid;
   grid-template-rows: 7vh 35vh 1fr;
   grid-template-columns: 1rem 1fr 1fr 1rem;

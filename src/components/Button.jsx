@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const Button = ({ primary = false, children, onClick }) => (
+const Button = ({ primary = false, children, onClick, ...props }) => (
   <StyledButton
+    {...props}
     primary={primary}
     onClick={onClick}
     whileTap={{ scale: 0.98 }}

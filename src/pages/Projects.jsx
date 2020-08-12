@@ -9,10 +9,14 @@ import { FiUserCheck } from 'react-icons/fi';
 import Button from '../components/Button';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { ArrowWrapper } from './Hero';
+import useModal from '../hooks/useModal';
+import Modal from '../components/Modal';
+import Gallery from '../components/Gallery';
 
 const Projects = () => {
+  const [isModalOpen, toggleModal] = useModal();
   return (
-    <Wrapper>
+    <Wrapper id='work'>
       <Logo />
       <ProjectDesc>
         <h2>Swiss Knife</h2>
@@ -46,14 +50,24 @@ const Projects = () => {
         </Feature>
       </Features>
       <ButtonWrapper>
-        <Button primary>Live</Button>
-        <Button>Code</Button>
-        <Button>Gallery</Button>
+        <Button as='a' href='https://swissknife.tech' target='_blank'>
+          Live
+        </Button>
+        <Button
+          as='a'
+          href='https://github.com/Marty-W/swiss-knife'
+          target='_blank'>
+          Code
+        </Button>
+        <Button onClick={() => toggleModal()}>Gallery</Button>
       </ButtonWrapper>
       <Arrow>
         <span>contact</span>
         <AiOutlineArrowDown />
       </Arrow>
+      <Modal isShowing={isModalOpen} hide={toggleModal}>
+        <Gallery />
+      </Modal>
     </Wrapper>
   );
 };
@@ -62,8 +76,7 @@ export default Projects;
 
 const Wrapper = styled.div`
   scroll-snap-align: start;
-  height: 100vh;
-  width: 100vw;
+  grid-area: work;
   display: grid;
   grid-template-columns: 1rem 1fr 1fr 1rem;
   grid-template-rows: 7vh 35vh 0.4fr 30vh;
@@ -84,6 +97,7 @@ export const Logo = styled(LogoSVG)`
 `;
 
 const ProjectDesc = styled.div`
+  margin: 0 -1rem;
   grid-area: projectDesc;
   background-color: ${(props) => props.theme.colors.accent};
   color: ${(props) => props.theme.colors.primary};
@@ -108,6 +122,10 @@ const ProjectDesc = styled.div`
     transform: rotate(-45deg);
     width: 4rem;
     height: 4rem;
+  }
+
+  @media (min-width: 650px) {
+    margin: 0 -2rem;
   }
 `;
 
@@ -166,6 +184,11 @@ const ButtonWrapper = styled.div`
   & button {
     width: 80%;
     margin-bottom: 0.5rem;
+  }
+  & a {
+    width: 80%;
+    text-align: center;
+    font-family: inherit;
   }
 `;
 

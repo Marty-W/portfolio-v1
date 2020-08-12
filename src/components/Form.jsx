@@ -5,6 +5,7 @@ import { Axios, db } from '../firebase/firebaseConfig';
 
 const Form = () => {
   const [formData, setFormData] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -22,6 +23,7 @@ const Form = () => {
       email: '',
       message: '',
     });
+    setIsSubmitted(true);
   };
 
   const sendEmail = () => {
@@ -50,43 +52,54 @@ const Form = () => {
   };
   return (
     <Wrapper>
-      <h2>Leave me a message.</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type='text'
-            name='name'
-            placeholder='Name'
-            value={formData.name || ''}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type='email'
-            name='email'
-            placeholder='Email'
-            value={formData.email || ''}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          Message:
-          <textarea
-            name='message'
-            placeholder='Your message'
-            rows='5'
-            cols='5'
-            value={formData.message || ''}
-            onChange={handleInputChange}
-          />
-        </label>
-        <Button type='submit' primary>
-          Submit
-        </Button>
-      </form>
+      {isSubmitted ? (
+        <SubmittedWrapper>
+          <h2>Thanks for your message!</h2>
+          <Button onClick={() => setIsSubmitted(false)}>
+            Send me another one!
+          </Button>
+        </SubmittedWrapper>
+      ) : (
+        <>
+          <h2>Leave me a message.</h2>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Name:
+              <input
+                type='text'
+                name='name'
+                placeholder='Name'
+                value={formData.name || ''}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label>
+              Email:
+              <input
+                type='email'
+                name='email'
+                placeholder='Email'
+                value={formData.email || ''}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label>
+              Message:
+              <textarea
+                name='message'
+                placeholder='Your message'
+                rows='5'
+                cols='5'
+                value={formData.message || ''}
+                onChange={handleInputChange}
+              />
+            </label>
+            <Button type='submit' primary>
+              Submit
+            </Button>
+          </form>
+        </>
+      )}
     </Wrapper>
   );
 };
@@ -94,6 +107,7 @@ const Form = () => {
 export default Form;
 
 const Wrapper = styled.div`
+  margin: 0 -1rem;
   height: 100%;
   padding: 1rem;
   grid-area: form;
@@ -126,5 +140,22 @@ const Wrapper = styled.div`
       margin: 1rem 0;
       font-family: inherit;
     }
+  }
+
+  @media (min-width: 650px) {
+    margin: 0 -2rem;
+  }
+`;
+
+const SubmittedWrapper = styled.div`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & button {
+    color: ${(props) => props.theme.colors.primary};
+    border-color: ${(props) => props.theme.colors.primary};
   }
 `;
