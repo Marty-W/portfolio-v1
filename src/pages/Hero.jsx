@@ -15,12 +15,12 @@ const Hero = () => {
         <img src={HeroPng} />
       </HeroImg>
       <BtnWrapper>
-        <Button primary>
-          <a href='#contact'>Hire me</a>
-        </Button>
-        <Button>
-          <a href='#work'>My work</a>
-        </Button>
+        <a href='#contact'>
+          <Button primary>Hire me</Button>
+        </a>
+        <a href='#work'>
+          <Button>My Work</Button>
+        </a>
       </BtnWrapper>
       <ArrowWrapper>
         <span>latest work</span>
