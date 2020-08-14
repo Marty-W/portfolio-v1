@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import ScreenShot from '../assets/screenshot.png';
 import ScreenShot2 from '../assets/screenshot2.png';
 

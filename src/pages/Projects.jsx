@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { ReactComponent as LogoSVG } from '../assets/Logo.svg';
 import { GiSwissArmyKnife } from 'react-icons/gi';
 import { IoIosTimer } from 'react-icons/io';
@@ -12,7 +12,7 @@ import { ArrowWrapper } from './Hero';
 
 const Projects = () => {
   return (
-    <Wrapper>
+    <Wrapper id='work'>
       <Logo />
       <ProjectDesc>
         <h2>Swiss Knife</h2>
@@ -62,7 +62,7 @@ export default Projects;
 
 const Wrapper = styled.div`
   scroll-snap-align: start;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: grid;
   grid-template-columns: 1rem 1fr 1fr 1rem;

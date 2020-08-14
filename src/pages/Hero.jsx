@@ -13,8 +13,12 @@ const Hero = () => {
       <SubHeader>front-end dev, looking for a job</SubHeader>
       <HeroImg src={HeroPng} />
       <BtnWrapper>
-        <Button primary>Hire me</Button>
-        <Button>My work</Button>
+        <Button primary>
+          <a href='#contact'>Hire me</a>
+        </Button>
+        <Button>
+          <a href='#work'>My work</a>
+        </Button>
       </BtnWrapper>
       <ArrowWrapper>
         <span>latest work</span>
@@ -28,7 +32,7 @@ export default Hero;
 
 const Wrapper = styled.div`
   scroll-snap-align: start;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   grid-column: 2 / span 1;
   display: grid;
@@ -72,6 +76,7 @@ const BtnWrapper = styled.div`
 
   & button {
     margin-bottom: 1rem;
+    width: 90%;
   }
 `;
 

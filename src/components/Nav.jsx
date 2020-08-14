@@ -1,14 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { ReactComponent as LogoSVG } from '../assets/Logo.svg';
-import { theme } from '../theme/theme';
 
 const Nav = () => (
   <Wrapper>
     <Logo />
     <Links>
-      <span>work</span>
-      <span>contact</span>
+      <a href='#work'>
+        <span>work</span>
+      </a>
+      <a href='#contact'>
+        <span>contact</span>
+      </a>
     </Links>
   </Wrapper>
 );
@@ -21,7 +24,7 @@ const Wrapper = styled.div`
 
 const Links = styled.div`
   height: 60%;
-  text-transform: uppercase;
+  text-transform: lowercase;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
