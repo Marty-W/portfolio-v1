@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import Button from '../components/Button';
 import Nav from '../components/Nav';
-import HeroPng from '../assets/hero.svg';
+import HeroPng from '../assets/hero.png';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 
 const Hero = () => {
@@ -11,14 +11,16 @@ const Hero = () => {
       <Nav />
       <Header>Hi, I'm Martin.</Header>
       <SubHeader>front-end dev, looking for a job</SubHeader>
-      <HeroImg src={HeroPng} />
+      <HeroImg>
+        <img src={HeroPng} />
+      </HeroImg>
       <BtnWrapper>
-        <Button primary>
-          <a href='#contact'>Hire me</a>
-        </Button>
-        <Button>
-          <a href='#work'>My work</a>
-        </Button>
+        <a href='#contact'>
+          <Button primary>Hire me</Button>
+        </a>
+        <a href='#work'>
+          <Button>My Work</Button>
+        </a>
       </BtnWrapper>
       <ArrowWrapper>
         <span>latest work</span>
@@ -32,68 +34,106 @@ export default Hero;
 
 const Wrapper = styled.div`
   scroll-snap-align: start;
-  min-height: 100vh;
-  width: 100vw;
-  grid-column: 2 / span 1;
+  grid-area: landing;
   display: grid;
-  grid-template-rows: 10vh 3rem 4rem 50vh 1fr;
-  grid-template-columns: 1rem 1fr 1fr 1rem;
+  grid-template-rows: 10vh 1fr 0.3fr 1fr 0.7fr 0.4fr;
+  grid-template-columns: 1fr 1fr;
   grid-row-gap: 1rem;
   grid-template-areas:
-    '. nav nav .'
-    '. header header .'
-    '. subheader . .'
-    '. hero hero .'
-    '. btns arrow .';
+    'nav nav'
+    'header header'
+    'subheader subheader'
+    'hero hero'
+    'btns btns'
+    '. arrow';
   text-align: center;
+
+  @media (min-width: 800px) {
+    grid-template-rows: 10vh 1fr 1fr 0.5fr 0.7fr 1fr;
+    grid-template-columns: 1fr 0.8fr;
+    grid-column-gap: 3rem;
+    grid-template-areas:
+      'nav nav'
+      '. .'
+      'hero header'
+      'hero subheader'
+      'hero btns'
+      '. arrow';
+  }
 `;
 
 const Header = styled.h1`
   color: ${(props) => props.theme.colors.accent};
   grid-area: header;
   font-weight: bold;
-  align-self: flex-end;
   font-size: 2.5rem;
-  justify-self: start;
+  justify-self: center;
   align-self: end;
+
+  @media (min-width: 800px) {
+    justify-self: start;
+  }
+
+  @media (min-width: 1000px) {
+    font-size: 3rem;
+  }
 `;
 
 const SubHeader = styled.h2`
   color: ${(props) => props.theme.colors.tertiary};
   grid-area: subheader;
+  align-self: center;
   font-size: 1.3rem;
-  display: block;
-  justify-self: start;
-  text-align: left;
-`;
 
-const BtnWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  grid-area: btns;
+  @media (min-width: 800px) {
+    justify-self: start;
+  }
 
-  & button {
-    margin-bottom: 1rem;
-    width: 90%;
+  @media (min-width: 1000px) {
+    font-size: 1.8rem;
   }
 `;
 
-const HeroImg = styled.img`
+const BtnWrapper = styled.div`
+  grid-area: btns;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & button {
+    margin: 1rem;
+  }
+
+  @media (min-width: 800px) {
+    place-self: start;
+    justify-content: start;
+
+    & button {
+      margin: 0 1rem 0 0;
+    }
+  }
+`;
+
+const HeroImg = styled.div`
   grid-area: hero;
-  align-self: center;
+  place-self: center;
+  max-width: 360px;
+
+  @media (min-width: 1000px) {
+    max-width: 550px;
+  }
 `;
 
 export const ArrowWrapper = styled.div`
   grid-area: arrow;
+  align-self: center;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-evenly;
+  justify-content: end;
+  align-items: center;
 
   & span {
     font-size: 1.3rem;
+    margin-right: 1rem;
   }
 
   & svg {

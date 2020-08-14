@@ -9,8 +9,12 @@ import { FiUserCheck } from 'react-icons/fi';
 import Button from '../components/Button';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { ArrowWrapper } from './Hero';
+import useModal from '../hooks/useModal';
+import Modal from '../components/Modal';
+import Gallery from '../components/Gallery';
 
 const Projects = () => {
+  const [isModalOpen, toggleModal] = useModal();
   return (
     <Wrapper id='work'>
       <Logo />
@@ -46,14 +50,26 @@ const Projects = () => {
         </Feature>
       </Features>
       <ButtonWrapper>
-        <Button primary>Live</Button>
-        <Button>Code</Button>
-        <Button>Gallery</Button>
+        <a href='https://swissknife.tech' target='_blank'>
+          <Button primary>Live</Button>
+        </a>
+        <a href='https://github.com/Marty-W/swiss-knife' target='_blank'>
+          <Button>Code</Button>
+        </a>
+        <Button onClick={() => toggleModal()} className='gallery'>
+          Gallery
+        </Button>
       </ButtonWrapper>
       <Arrow>
         <span>contact</span>
         <AiOutlineArrowDown />
       </Arrow>
+      <GalleryWrapper>
+        <Gallery />
+      </GalleryWrapper>
+      <Modal isShowing={isModalOpen} hide={toggleModal}>
+        <Gallery />
+      </Modal>
     </Wrapper>
   );
 };
@@ -62,18 +78,41 @@ export default Projects;
 
 const Wrapper = styled.div`
   scroll-snap-align: start;
-  min-height: 100vh;
-  width: 100vw;
+  grid-area: work;
   display: grid;
-  grid-template-columns: 1rem 1fr 1fr 1rem;
+  grid-template-columns: 1fr 0.7fr;
   grid-template-rows: 7vh 35vh 0.4fr 30vh;
-  grid-row-gap: 1rem;
+  grid-row-gap: 1.5rem;
   grid-template-areas:
-    '. logo logo .'
-    'projectDesc projectDesc projectDesc projectDesc'
-    '. stack stack .'
-    '. features btns .'
-    '. arrow arrow .';
+    'logo logo'
+    'projectDesc projectDesc'
+    'stack stack'
+    'features btns'
+    'arrow arrow';
+
+  @media (min-width: 550px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 7vh 3fr 1.7fr 1fr 1fr 1fr;
+    grid-template-areas:
+      'logo logo'
+      'projectDesc projectDesc'
+      'features features'
+      'stack stack'
+      'btns btns'
+      'arrow arrow';
+  }
+
+  @media (min-width: 850px) {
+    grid-template-areas:
+      'logo logo'
+      'gallery projectDesc'
+      'gallery features'
+      'gallery stack'
+      'gallery btns'
+      '. arrow';
+
+    grid-column-gap: 3rem;
+  }
 `;
 
 export const Logo = styled(LogoSVG)`
@@ -84,10 +123,11 @@ export const Logo = styled(LogoSVG)`
 `;
 
 const ProjectDesc = styled.div`
+  margin: 0 -1rem;
   grid-area: projectDesc;
   background-color: ${(props) => props.theme.colors.accent};
   color: ${(props) => props.theme.colors.primary};
-  padding: 1.5rem;
+  padding: 1rem;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   line-height: 1.4;
@@ -95,7 +135,8 @@ const ProjectDesc = styled.div`
   & h2 {
     font-weight: bold;
     font-size: 2.3rem;
-    grid-column: 1 / -1;
+    grid-column: 1 / span 1;
+    align-self: center;
   }
 
   & p {
@@ -103,11 +144,24 @@ const ProjectDesc = styled.div`
   }
 
   & svg {
-    align-self: center;
-    justify-self: end;
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    place-self: center;
     transform: rotate(-45deg);
     width: 4rem;
     height: 4rem;
+  }
+
+  @media (min-width: 650px) {
+    margin: 0 -2rem;
+    padding: 0 2rem;
+  }
+
+  @media (min-width: 850px) {
+    margin: 0;
+    background-color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.secondary};
+    padding: 0;
   }
 `;
 
@@ -126,24 +180,17 @@ const Stack = styled.div`
 
 const Features = styled.div`
   grid-area: features;
-  align-self: start;
-  justify-self: start;
   display: flex;
-  height: 100%;
   flex-direction: column;
+  justify-content: space-evenly;
 
   & h3 {
     font-size: 1.4rem;
-    margin-bottom: 0.5rem;
   }
 
   & svg {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  & div {
-    margin-bottom: 1rem;
+    width: 2rem;
+    height: 2rem;
   }
 `;
 
@@ -160,16 +207,41 @@ const ButtonWrapper = styled.div`
   grid-area: btns;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-around;
+  justify-content: space-evenly;
 
   & button {
-    width: 80%;
-    margin-bottom: 0.5rem;
+    max-width: 150px;
+  }
+  & a {
+    max-width: 150px;
+    & button {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 550px) {
+    align-self: flex-start;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @media (min-width: 850px) {
+    & .gallery {
+      display: none;
+    }
   }
 `;
 
 const Arrow = styled(ArrowWrapper)`
   justify-self: center;
   align-items: center;
+`;
+
+const GalleryWrapper = styled.div`
+  display: none;
+
+  @media (min-width: 850px) {
+    display: block;
+    grid-area: gallery;
+  }
 `;

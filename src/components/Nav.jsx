@@ -30,6 +30,16 @@ const Links = styled.div`
   justify-content: space-evenly;
   align-items: flex-start;
   color: ${(props) => props.theme.colors.tertiary};
+
+  @media (min-width: 800px) {
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+
+    & a {
+      margin-right: 2rem;
+    }
+  }
 `;
 
 const Logo = styled(LogoSVG)`
