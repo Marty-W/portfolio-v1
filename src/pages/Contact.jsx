@@ -25,31 +25,35 @@ export default Contact;
 
 const Wrapper = styled.div`
   grid-area: contact;
-  scroll-snap-align: start;
+  scroll-snap-align: end;
   display: grid;
-  grid-template-rows: 7vh 35vh 1fr;
-  grid-template-columns: 1rem 1fr 1fr 1rem;
+  grid-template-rows: 7vh 40vh 1fr;
+  grid-template-columns: 1fr;
   grid-template-areas:
-    '. logo logo .'
-    '. contact contact .'
-    'form form form form';
+    'logo'
+    'contact'
+    'form';
 `;
 
 const ContactWrapper = styled.div`
   grid-area: contact;
-  place-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   & span {
     font-size: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   & svg {
-    margin-right: 1rem;
     width: 2rem;
     height: 2rem;
+  }
+
+  & div {
+    display: flex;
+    justify-content: space-evenly;
   }
 `;

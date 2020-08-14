@@ -15,11 +15,12 @@ const App = () => (
 const BodyWrapper = styled.div`
   display: grid;
   grid-template-columns: 1rem 1fr 1rem;
-  grid-template-rows: repeat(3, 100vh 100vh 100vh);
+  grid-template-rows: repeat(3, 100vh);
   grid-template-areas:
     '. landing .'
     '. work .'
     '. contact .';
+  scroll-snap-type: y mandatory;
 
   @media (min-width: 650px) {
     grid-template-columns: 2rem 1fr 2rem;

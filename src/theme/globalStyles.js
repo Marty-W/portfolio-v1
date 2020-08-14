@@ -74,8 +74,6 @@ a {
      font-family: 'Raleway', sans-serif;
      scroll-snap-type: y mandatory;
      background-color: ${(props) => props.theme.colors.primary};
-     overflow-x: hidden;
      overflow-y: scroll;
-     height:100%;
  }
 `;

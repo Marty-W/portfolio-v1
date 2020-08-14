@@ -145,7 +145,7 @@ const ProjectDesc = styled.div`
 
   & svg {
     grid-column: 2 / span 1;
-    grid-row: 1 / span 1;
+    grid-row: 1 / span 2;
     place-self: center;
     transform: rotate(-45deg);
     width: 4rem;
@@ -207,13 +207,13 @@ const ButtonWrapper = styled.div`
   grid-area: btns;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
 
+  & a,
   & button {
-    max-width: 150px;
-  }
-  & a {
-    max-width: 150px;
+    min-width: 70%;
+
     & button {
       width: 100%;
     }

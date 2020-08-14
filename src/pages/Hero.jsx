@@ -19,7 +19,7 @@ const Hero = () => {
           <Button primary>Hire me</Button>
         </a>
         <a href='#work'>
-          <Button>My Work</Button>
+          <Button>My work</Button>
         </a>
       </BtnWrapper>
       <ArrowWrapper>
@@ -33,7 +33,7 @@ const Hero = () => {
 export default Hero;
 
 const Wrapper = styled.div`
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   grid-area: landing;
   display: grid;
   grid-template-rows: 10vh 1fr 0.3fr 1fr 0.7fr 0.4fr;

@@ -108,7 +108,6 @@ export default Form;
 
 const Wrapper = styled.div`
   margin: 0 -1rem;
-  height: 100%;
   padding: 1rem;
   grid-area: form;
   background-color: ${(props) => props.theme.colors.secondary};
@@ -123,12 +122,12 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    height: calc(100% - 2.5rem);
 
     & input {
       padding: 10px;
       border-radius: 5px;
       border: none;
-      margin: 1rem 0;
       width: 100%;
     }
 
@@ -137,7 +136,6 @@ const Wrapper = styled.div`
       border-radius: 5px;
       border: none;
       width: 100%;
-      margin: 1rem 0;
       font-family: inherit;
     }
   }
