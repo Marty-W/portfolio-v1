@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import Button from '../components/Button';
 import Nav from '../components/Nav';
-import HeroPng from '../assets/hero.png';
 import { AiOutlineArrowDown } from 'react-icons/ai';
+import HeroPng from '../assets/hero.png';
 
 const Hero = () => {
   return (

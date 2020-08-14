@@ -33,10 +33,24 @@ const Wrapper = styled.div`
     'logo'
     'contact'
     'form';
+
+  @media (min-width: 650px) {
+    grid-template-columns: 1fr 3rem 1fr;
+    grid-template-rows: 7vh repeat(5, 1fr);
+
+    grid-template-areas:
+      '. logo .'
+      '. . .'
+      '. . form'
+      'contact . form'
+      '. . form'
+      '. . .';
+  }
 `;
 
 const ContactWrapper = styled.div`
   grid-area: contact;
+
   display: flex;
   flex-direction: column;
   align-items: center;

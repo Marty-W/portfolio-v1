@@ -50,10 +50,16 @@ const Projects = () => {
         </Feature>
       </Features>
       <ButtonWrapper>
-        <a href='https://swissknife.tech' target='_blank'>
+        <a
+          href='https://swissknife.tech'
+          target='_blank'
+          rel='noopener noreferrer'>
           <Button primary>Live</Button>
         </a>
-        <a href='https://github.com/Marty-W/swiss-knife' target='_blank'>
+        <a
+          href='https://github.com/Marty-W/swiss-knife'
+          target='_blank'
+          rel='noopener noreferrer'>
           <Button>Code</Button>
         </a>
         <Button onClick={() => toggleModal()} className='gallery'>
@@ -92,7 +98,7 @@ const Wrapper = styled.div`
 
   @media (min-width: 550px) {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 7vh 3fr 1.7fr 1fr 1fr 1fr;
+    grid-template-rows: 7vh 1.5fr 1.5fr repeat(3, 1fr);
     grid-template-areas:
       'logo logo'
       'projectDesc projectDesc'
@@ -212,7 +218,7 @@ const ButtonWrapper = styled.div`
 
   & a,
   & button {
-    min-width: 70%;
+    width: 70%;
 
     & button {
       width: 100%;
@@ -223,11 +229,20 @@ const ButtonWrapper = styled.div`
     align-self: flex-start;
     flex-direction: row;
     align-items: center;
+    & a,
+    & button {
+      width: 20%;
+    }
   }
 
   @media (min-width: 850px) {
     & .gallery {
       display: none;
+    }
+
+    & a,
+    & button {
+      min-width: 30%;
     }
   }
 `;

@@ -51,7 +51,7 @@ const Form = () => {
     }
   };
   return (
-    <Wrapper>
+    <>
       {isSubmitted ? (
         <SubmittedWrapper>
           <h2>Thanks for your message!</h2>
@@ -60,9 +60,9 @@ const Form = () => {
           </Button>
         </SubmittedWrapper>
       ) : (
-        <>
-          <h2>Leave me a message.</h2>
+        <Wrapper>
           <form onSubmit={handleSubmit}>
+            <h2>Leave me a message.</h2>
             <label>
               Name:
               <input
@@ -98,9 +98,9 @@ const Form = () => {
               Submit
             </Button>
           </form>
-        </>
+        </Wrapper>
       )}
-    </Wrapper>
+    </>
   );
 };
 
@@ -108,6 +108,7 @@ export default Form;
 
 const Wrapper = styled.div`
   margin: 0 -1rem;
+  font-weight: bold;
   padding: 1rem;
   grid-area: form;
   background-color: ${(props) => props.theme.colors.secondary};
@@ -115,20 +116,22 @@ const Wrapper = styled.div`
 
   & h2 {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-weight: bold;
   }
 
   & form {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: calc(100% - 2.5rem);
 
     & input {
       padding: 10px;
       border-radius: 5px;
       border: none;
       width: 100%;
+      margin-top: 0.5rem;
+      background-color: #dfdfdf;
     }
 
     & textarea {
@@ -137,23 +140,47 @@ const Wrapper = styled.div`
       border: none;
       width: 100%;
       font-family: inherit;
+      margin-top: 0.5rem;
+      background-color: #dfdfdf;
     }
   }
 
   @media (min-width: 650px) {
-    margin: 0 -2rem;
+    background-color: ${(props) => props.theme.colors.primary};
+    padding: 0;
+    margin: 0;
+    color: ${(props) => props.theme.colors.secondary};
+  }
+
+  @media (min-width: 1300px) {
+    width: 80%;
+    margin: 0 auto;
+
+    & form {
+      & button {
+        width: 50%;
+        margin: 0 auto;
+      }
+    }
   }
 `;
 
 const SubmittedWrapper = styled.div`
+  grid-area: form;
   display: flex;
   height: 100%;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   & button {
-    color: ${(props) => props.theme.colors.primary};
-    border-color: ${(props) => props.theme.colors.primary};
+    margin-top: 2rem;
+    color: ${(props) => props.theme.colors.secondary};
+    border-color: ${(props) => props.theme.colors.secondary};
+  }
+
+  @media (min-width: 520px) {
+    grid-row: 4 / span 1;
+    justify-content: center;
   }
 `;
