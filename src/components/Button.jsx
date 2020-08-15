@@ -15,6 +15,8 @@ const Button = ({ primary = false, children, onClick, ...props }) => (
 
 export default Button;
 
+//FIXME padding on primary
+
 const StyledButton = styled(motion.button)`
   background: ${(props) =>
     props.primary ? props.theme.colors.accent : 'none'};

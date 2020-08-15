@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import { Logo } from './Projects';
 import { AiOutlineGithub, AiOutlineLinkedin } from 'react-icons/ai';
 import Form from '../components/Form';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   return (
@@ -10,10 +11,23 @@ const Contact = () => {
       <Logo />
       <ContactWrapper>
         <span>Martin Weber</span>
-        <span>webermartin@seznam.cz</span>
+        <a href='mailto:webermartin@seznam.cz'>webermartin@seznam.cz</a>
         <div>
-          <AiOutlineGithub />
-          <AiOutlineLinkedin />
+          <motion.a
+            href='https://github.com/Marty-W'
+            target='_blank'
+            rel='noopener noreferrer'
+            whileHover={{ scale: 1.1 }}>
+            <AiOutlineGithub />
+          </motion.a>
+
+          <motion.a
+            href='https://linkedin.com/in/martin-weber-4871341b3'
+            target='_blank'
+            rel='noopener noreferrer'
+            whileHover={{ scale: 1.1 }}>
+            <AiOutlineLinkedin />
+          </motion.a>
         </div>
       </ContactWrapper>
       <Form />
@@ -56,14 +70,16 @@ const ContactWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  & span {
+  & span,
+  & a {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
   }
 
   & svg {
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
   }
 
   & div {
