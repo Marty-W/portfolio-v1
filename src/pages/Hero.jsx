@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 import Button from '../components/Button';
 import Nav from '../components/Nav';
 import { AiOutlineArrowDown } from 'react-icons/ai';
-import HeroPng from '../assets/hero.png';
+import HeroSVG from '../components/HeroSVG';
 
 const Hero = () => {
   return (
@@ -12,7 +12,7 @@ const Hero = () => {
       <Header>Hi, I'm Martin.</Header>
       <SubHeader>front-end dev, looking for a job</SubHeader>
       <HeroImg>
-        <img src={HeroPng} />
+        <HeroSVG />
       </HeroImg>
       <BtnWrapper>
         <a href='#contact'>
