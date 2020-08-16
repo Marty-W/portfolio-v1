@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import Nav from '../components/Nav';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import HeroSVG from '../components/HeroSVG';
+import HeroImg from '../assets/hero.webp';
 
 const Hero = () => {
   return (
@@ -11,9 +12,10 @@ const Hero = () => {
       <Nav />
       <Header>Hi, I'm Martin.</Header>
       <SubHeader>front-end dev, looking for a job</SubHeader>
-      <HeroImg>
+      <HeroWrapper>
+        <img src={HeroImg} />
         <HeroSVG />
-      </HeroImg>
+      </HeroWrapper>
       <BtnWrapper>
         <a href='#contact'>
           <Button primary>Hire me</Button>
@@ -33,7 +35,6 @@ const Hero = () => {
 export default Hero;
 
 const Wrapper = styled.div`
-  scroll-snap-align: center;
   grid-area: landing;
   display: grid;
   grid-template-rows: 10vh 1fr 0.3fr 1fr 0.7fr 0.4fr;
@@ -50,7 +51,7 @@ const Wrapper = styled.div`
 
   @media (min-width: 800px) {
     grid-template-rows: 10vh 1fr 1fr 0.5fr 0.7fr 1fr;
-    grid-template-columns: 1fr 0.8fr;
+    grid-template-columns: 1fr 1fr;
     grid-column-gap: 3rem;
     grid-template-areas:
       'nav nav'
@@ -114,13 +115,29 @@ const BtnWrapper = styled.div`
   }
 `;
 
-const HeroImg = styled.div`
+const HeroWrapper = styled.div`
   grid-area: hero;
   place-self: center;
-  max-width: 360px;
+  max-width: 300px;
+  position: relative;
+
+  & svg {
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 4rem;
+  }
 
   @media (min-width: 1000px) {
     max-width: 550px;
+    & svg {
+      padding: 8rem;
+    }
   }
 `;
 

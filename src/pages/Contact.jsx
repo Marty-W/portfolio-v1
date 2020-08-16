@@ -39,7 +39,7 @@ export default Contact;
 
 const Wrapper = styled.div`
   grid-area: contact;
-  scroll-snap-align: end;
+  scroll-snap-align: start;
   display: grid;
   grid-template-rows: 7vh 40vh 1fr;
   grid-template-columns: 1fr;

@@ -20,7 +20,6 @@ const BodyWrapper = styled.div`
     '. landing .'
     '. work .'
     '. contact .';
-  scroll-snap-type: y mandatory;
 
   @media (min-width: 650px) {
     grid-template-columns: 2rem 1fr 2rem;

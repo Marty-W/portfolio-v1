@@ -83,11 +83,10 @@ const Projects = () => {
 export default Projects;
 
 const Wrapper = styled.div`
-  scroll-snap-align: start;
   grid-area: work;
   display: grid;
   grid-template-columns: 1fr 0.7fr;
-  grid-template-rows: 7vh 35vh 0.4fr 30vh;
+  grid-template-rows: 7vh 35vh 0.4fr 25vh 1fr;
   grid-row-gap: 1.5rem;
   grid-template-areas:
     'logo logo'

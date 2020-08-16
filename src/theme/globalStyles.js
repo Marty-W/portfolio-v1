@@ -51,8 +51,7 @@ textarea {
 
 html {
   box-sizing: border-box;
-  scroll-snap-type: y mandatory;
-  height: 100%;
+
 }
 
 *, *::before, *::after {
@@ -72,8 +71,7 @@ a {
 
  body {
      font-family: 'Raleway', sans-serif;
-     scroll-snap-type: y mandatory;
      background-color: ${(props) => props.theme.colors.primary};
-   
+
  }
 `;
