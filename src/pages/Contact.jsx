@@ -4,6 +4,7 @@ import { Logo } from './Projects';
 import { AiOutlineGithub, AiOutlineLinkedin } from 'react-icons/ai';
 import Form from '../components/Form';
 import { motion } from 'framer-motion';
+import Button from '../components/Button';
 
 const Contact = () => {
   return (
@@ -29,6 +30,7 @@ const Contact = () => {
             <AiOutlineLinkedin />
           </motion.a>
         </div>
+        <Button>Resume</Button>
       </ContactWrapper>
       <Form />
     </Wrapper>

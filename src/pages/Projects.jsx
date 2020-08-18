@@ -215,13 +215,16 @@ const ButtonWrapper = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  & a,
-  & button {
-    width: 70%;
+  & a {
+    width: 80%;
 
     & button {
       width: 100%;
     }
+  }
+
+  & button {
+    width: 80%;
   }
 
   @media (min-width: 550px) {
@@ -247,7 +250,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const Arrow = styled(ArrowWrapper)`
-  justify-self: center;
+  justify-self: flex-end;
   align-items: center;
 `;
 

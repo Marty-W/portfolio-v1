@@ -40,8 +40,8 @@ const StyledModal = styled(motion.div)`
 
 const ModalCardWrapper = styled(motion.div)`
   position: absolute;
-  width: 90vw;
-  height: 70vh;
+  width: 95vw;
+  height: 90vh;
   max-width: 500px;
   padding: 1em;
   background-color: ${(props) => props.theme.colors.primary};
@@ -54,8 +54,8 @@ const ModalCardWrapper = styled(motion.div)`
 
 const CloseBtn = styled(IoMdClose)`
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 0.1rem;
+  right: 0.1rem;
   fill: ${(props) => props.theme.colors.tertiary};
   width: 1.1rem;
   height: 1.1rem;
