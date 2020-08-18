@@ -96,7 +96,7 @@ const Wrapper = styled.div`
     'arrow arrow';
 
   @media (min-width: 550px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.3fr 1fr;
     grid-template-rows: 7vh 1.5fr 1.5fr repeat(3, 1fr);
     grid-template-areas:
       'logo logo'

@@ -13,7 +13,7 @@ const Hero = () => {
       <Header>Hi, I'm Martin.</Header>
       <SubHeader>front-end dev, looking for a job</SubHeader>
       <HeroWrapper>
-        <img src={HeroImg} />
+        <img src={HeroImg} alt='hero' />
         <HeroSVG />
       </HeroWrapper>
       <BtnWrapper>
