@@ -71,6 +71,7 @@ const Form = () => {
                 placeholder='Name'
                 value={formData.name || ''}
                 onChange={handleInputChange}
+                required
               />
             </label>
             <label>
@@ -81,6 +82,7 @@ const Form = () => {
                 placeholder='Email'
                 value={formData.email || ''}
                 onChange={handleInputChange}
+                required
               />
             </label>
             <label>
@@ -92,6 +94,7 @@ const Form = () => {
                 cols='5'
                 value={formData.message || ''}
                 onChange={handleInputChange}
+                required
               />
             </label>
             <Button type='submit' primary>
