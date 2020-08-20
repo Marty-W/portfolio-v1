@@ -72,6 +72,6 @@ a {
  body {
      font-family: 'Raleway', sans-serif;
      background-color: ${(props) => props.theme.colors.primary};
-
+    scroll-behavior: smooth;
  }
 `;

@@ -52,7 +52,7 @@ const Wrapper = styled(motion.div)`
     'subheader subheader'
     'hero hero'
     'btns btns'
-    '. arrow';
+    'arrow arrow';
   text-align: center;
 
   @media (min-width: 800px) {
@@ -65,7 +65,7 @@ const Wrapper = styled(motion.div)`
       'hero header'
       'hero subheader'
       'hero btns'
-      '. arrow';
+      'arrow arrow';
   }
 `;
 

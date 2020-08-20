@@ -20,6 +20,7 @@ export default Arrow;
 const Wrapper = styled.div`
   grid-area: arrow;
   align-self: center;
+  justify-self: center;
   display: flex;
   justify-content: end;
   align-items: center;
