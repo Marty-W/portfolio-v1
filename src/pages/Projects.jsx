@@ -7,16 +7,19 @@ import { BsListTask } from 'react-icons/bs';
 import { AiOutlineRedo } from 'react-icons/ai';
 import { FiUserCheck } from 'react-icons/fi';
 import Button from '../components/Button';
-import { AiOutlineArrowDown } from 'react-icons/ai';
-import { ArrowWrapper } from './Hero';
 import useModal from '../hooks/useModal';
 import Modal from '../components/Modal';
 import Gallery from '../components/Gallery';
+import Arrow from '../components/Arrow';
+import { motion, useTransform } from 'framer-motion';
 
-const Projects = () => {
+const Projects = ({ progress }) => {
   const [isModalOpen, toggleModal] = useModal();
+  const scrollRange = [0, 0.5, 1];
+  const scrollOpacity = useTransform(progress, scrollRange, [0, 1, 0]);
+
   return (
-    <Wrapper id='work'>
+    <Wrapper id='work' style={{ opacity: scrollOpacity }}>
       <Logo />
       <ProjectDesc>
         <h2>Swiss Knife</h2>
@@ -50,26 +53,24 @@ const Projects = () => {
         </Feature>
       </Features>
       <ButtonWrapper>
-        <a
+        <Button
+          primary
           href='https://swissknife.tech'
           target='_blank'
           rel='noopener noreferrer'>
-          <Button primary>Live</Button>
-        </a>
-        <a
-          href='https://github.com/Marty-W/swiss-knife'
+          Live
+        </Button>
+        <Button
           target='_blank'
-          rel='noopener noreferrer'>
-          <Button>Code</Button>
-        </a>
+          rel='noopener noreferrer'
+          href='https://github.com/Marty-W/swiss-knife'>
+          Code
+        </Button>
         <Button onClick={() => toggleModal()} className='gallery'>
           Gallery
         </Button>
       </ButtonWrapper>
-      <Arrow>
-        <span>contact</span>
-        <AiOutlineArrowDown />
-      </Arrow>
+      <Arrow text='contact' />
       <GalleryWrapper>
         <Gallery />
       </GalleryWrapper>
@@ -82,7 +83,7 @@ const Projects = () => {
 
 export default Projects;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   grid-area: work;
   display: grid;
   grid-template-columns: 1fr 0.7fr;
@@ -215,43 +216,35 @@ const ButtonWrapper = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  & a {
-    width: 80%;
-
-    & button {
-      width: 100%;
-    }
-  }
-
+  & a,
   & button {
     width: 80%;
+    margin: 0 auto;
   }
 
   @media (min-width: 550px) {
-    align-self: flex-start;
     flex-direction: row;
     align-items: center;
     & a,
     & button {
-      width: 20%;
+      width: 25%;
     }
   }
 
   @media (min-width: 850px) {
+    width: 80%;
+    justify-self: start;
+    justify-content: start;
     & .gallery {
       display: none;
     }
 
     & a,
     & button {
-      min-width: 30%;
+      width: 30%;
+      max-width: 150px;
     }
   }
-`;
-
-const Arrow = styled(ArrowWrapper)`
-  justify-self: flex-end;
-  align-items: center;
 `;
 
 const GalleryWrapper = styled.div`

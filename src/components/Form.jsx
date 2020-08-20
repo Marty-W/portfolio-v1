@@ -176,7 +176,7 @@ const SubmittedWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
 
-  & button {
+  & a {
     margin-top: 2rem;
     color: ${(props) => props.theme.colors.secondary};
     border-color: ${(props) => props.theme.colors.secondary};

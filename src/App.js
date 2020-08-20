@@ -3,14 +3,19 @@ import styled from 'styled-components';
 import Hero from './pages/Hero';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
+import { useViewportScroll } from 'framer-motion';
 
-const App = () => (
-  <BodyWrapper>
-    <Hero />
-    <Projects />
-    <Contact />
-  </BodyWrapper>
-);
+const App = () => {
+  const { scrollYProgress } = useViewportScroll();
+
+  return (
+    <BodyWrapper>
+      <Hero progress={scrollYProgress} />
+      <Projects progress={scrollYProgress} />
+      <Contact progress={scrollYProgress} />
+    </BodyWrapper>
+  );
+};
 
 const BodyWrapper = styled.div`
   display: grid;

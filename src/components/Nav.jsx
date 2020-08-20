@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { ReactComponent as LogoSVG } from '../assets/Logo.svg';
+import { motion } from 'framer-motion';
 
 const Nav = () => (
-  <Wrapper>
+  <Wrapper
+    initial={{ y: -500 }}
+    animate={{ y: 0 }}
+    transition={{ duration: 3, type: 'spring', stiffness: 30, mass: 1.5 }}>
     <Logo />
     <Links>
       <a href='#work'>
@@ -15,7 +19,7 @@ const Nav = () => (
     </Links>
   </Wrapper>
 );
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   grid-area: nav;
   display: flex;
   justify-content: space-between;

@@ -2,39 +2,45 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import Button from '../components/Button';
 import Nav from '../components/Nav';
-import { AiOutlineArrowDown } from 'react-icons/ai';
 import HeroSVG from '../components/HeroSVG';
 import HeroImg from '../assets/hero.webp';
+import { motion, useTransform } from 'framer-motion';
+import Arrow from '../components/Arrow';
 
-const Hero = () => {
+const Hero = ({ progress }) => {
+  const scrollRange = [0, 0.5];
+  const scrollOpacity = useTransform(progress, scrollRange, [1, 0]);
+  const animateLeft = useTransform(progress, scrollRange, [0, -400]);
+  const animateRight = useTransform(progress, scrollRange, [0, 400]);
   return (
-    <Wrapper>
+    <Wrapper style={{ opacity: scrollOpacity }}>
       <Nav />
-      <Header>Hi, I'm Martin.</Header>
-      <SubHeader>front-end dev, looking for a job</SubHeader>
-      <HeroWrapper>
+      <Header style={{ x: animateRight }}>Hi, I'm Martin.</Header>
+      <SubHeader style={{ x: animateRight }}>
+        front-end dev, looking for a job
+      </SubHeader>
+      <HeroWrapper
+        style={{ x: animateLeft }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2 }}>
         <img src={HeroImg} alt='hero' />
         <HeroSVG />
       </HeroWrapper>
-      <BtnWrapper>
-        <a href='#contact'>
-          <Button primary>Hire me</Button>
-        </a>
-        <a href='#work'>
-          <Button>My work</Button>
-        </a>
+      <BtnWrapper style={{ x: animateRight }}>
+        <Button primary href='#contact'>
+          Hire me
+        </Button>
+        <Button href='#work'>My work</Button>
       </BtnWrapper>
-      <ArrowWrapper>
-        <span>latest work</span>
-        <AiOutlineArrowDown />
-      </ArrowWrapper>
+      <Arrow text='latest work' />
     </Wrapper>
   );
 };
 
 export default Hero;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   grid-area: landing;
   display: grid;
   grid-template-rows: 10vh 1fr 0.3fr 1fr 0.7fr 0.4fr;
@@ -63,7 +69,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Header = styled.h1`
+const Header = styled(motion.h1)`
   color: ${(props) => props.theme.colors.accent};
   grid-area: header;
   font-weight: bold;
@@ -80,7 +86,7 @@ const Header = styled.h1`
   }
 `;
 
-const SubHeader = styled.h2`
+const SubHeader = styled(motion.h2)`
   color: ${(props) => props.theme.colors.tertiary};
   grid-area: subheader;
   align-self: center;
@@ -95,13 +101,13 @@ const SubHeader = styled.h2`
   }
 `;
 
-const BtnWrapper = styled.div`
+const BtnWrapper = styled(motion.div)`
   grid-area: btns;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  & button {
+  & a {
     margin: 1rem;
   }
 
@@ -109,13 +115,13 @@ const BtnWrapper = styled.div`
     place-self: start;
     justify-content: start;
 
-    & button {
+    & a {
       margin: 0 1rem 0 0;
     }
   }
 `;
 
-const HeroWrapper = styled.div`
+const HeroWrapper = styled(motion.div)`
   grid-area: hero;
   place-self: center;
   max-width: 300px;
@@ -138,23 +144,5 @@ const HeroWrapper = styled.div`
     & svg {
       padding: 8rem;
     }
-  }
-`;
-
-export const ArrowWrapper = styled.div`
-  grid-area: arrow;
-  align-self: center;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-
-  & span {
-    font-size: 1.3rem;
-    margin-right: 1rem;
-  }
-
-  & svg {
-    width: 2rem;
-    height: 2rem;
   }
 `;

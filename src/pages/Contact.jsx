@@ -6,9 +6,9 @@ import Form from '../components/Form';
 import { motion } from 'framer-motion';
 import Button from '../components/Button';
 
-const Contact = () => {
+const Contact = ({ progress }) => {
   return (
-    <Wrapper id='contact'>
+    <Wrapper id='contact' style={{ opacity: progress }}>
       <Logo />
       <ContactWrapper>
         <span>Martin Weber</span>
@@ -30,7 +30,13 @@ const Contact = () => {
             <AiOutlineLinkedin />
           </motion.a>
         </div>
-        <Button>Resume</Button>
+
+        <Button
+          href='https://drive.google.com/file/d/1LjCrLu-hWGyUdIM-Qsw1zjWoCaahINuw/view?usp=sharing'
+          target='_blank'
+          rel='noopener noreferrer'>
+          Resume
+        </Button>
       </ContactWrapper>
       <Form />
     </Wrapper>
@@ -39,7 +45,7 @@ const Contact = () => {
 
 export default Contact;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   grid-area: contact;
   scroll-snap-align: start;
   display: grid;

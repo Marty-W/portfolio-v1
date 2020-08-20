@@ -16,7 +16,7 @@ import responsive from '../assets/responsive.png';
 const Gallery = () => {
   return (
     <Wrapper>
-      <AwesomeSlider className='slider'>
+      <AwesomeSlider className='slider' organicArrows>
         <div className='img'>
           <img src={responsive} alt='' />
           <Description>Swiss Knife is fully responsive.</Description>
@@ -81,6 +81,8 @@ const Wrapper = styled.div`
     height: 100%;
     --loader-bar-color: ${(props) => props.theme.colors.accent};
     --control-bullet-active-color: ${(props) => props.theme.colors.accent};
+    --slider-transition-duration: 200ms;
+    --organic-arrow-color: ${(props) => props.theme.colors.secondary};
   }
 
   & .img {
