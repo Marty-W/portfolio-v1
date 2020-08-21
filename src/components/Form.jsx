@@ -97,7 +97,7 @@ const Form = () => {
                 required
               />
             </label>
-            <Button type='submit' primary>
+            <Button type='submit' primary as='button'>
               Submit
             </Button>
           </form>
