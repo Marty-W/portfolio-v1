@@ -11,7 +11,7 @@ const App = () => {
   return (
     <BodyWrapper>
       <Hero progress={scrollYProgress} />
-      <Projects progress={scrollYProgress} />
+      <Projects />
       <Contact progress={scrollYProgress} />
     </BodyWrapper>
   );

@@ -47,7 +47,6 @@ export default Contact;
 
 const Wrapper = styled(motion.div)`
   grid-area: contact;
-  scroll-snap-align: start;
   display: grid;
   grid-template-rows: 7vh 40vh 1fr;
   grid-template-columns: 1fr;

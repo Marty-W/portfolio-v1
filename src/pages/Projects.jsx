@@ -11,20 +11,13 @@ import useModal from '../hooks/useModal';
 import Modal from '../components/Modal';
 import Gallery from '../components/Gallery';
 import Arrow from '../components/Arrow';
-import { motion, useTransform } from 'framer-motion';
-import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
-const Projects = ({ progress }) => {
+const Projects = () => {
   const [isModalOpen, toggleModal] = useModal();
-  const scrollRange = [0, 0.5, 1];
-  const scrollOpacity = useTransform(progress, scrollRange, [0, 1, 0]);
-
-  useEffect(() => {
-    console.log(progress.get());
-  }, [progress]);
 
   return (
-    <Wrapper id='work' style={{ opacity: scrollOpacity }}>
+    <Wrapper id='work'>
       <Logo />
       <ProjectDesc>
         <h2>Swiss Knife</h2>
