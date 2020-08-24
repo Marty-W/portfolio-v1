@@ -8,7 +8,7 @@ const Button = ({ primary = false, children, onClick, href, ...props }) => (
     primary={primary}
     onClick={onClick}
     whileTap={{ scale: 0.98 }}
-    whileHover={{ scale: 1.02 }}
+    whileHover={{ scaleX: 1.05 }}
     href={href}>
     {children}
   </StyledButton>
@@ -17,6 +17,7 @@ const Button = ({ primary = false, children, onClick, href, ...props }) => (
 export default Button;
 
 const StyledButton = styled(motion.a)`
+  display: block;
   background: ${(props) =>
     props.primary ? props.theme.colors.accent : 'none'};
   padding: 0.4rem 1.4rem;
